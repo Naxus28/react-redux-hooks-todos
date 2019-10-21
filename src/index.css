@@ -11,8 +11,16 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 36px;
+  font-size: 42px;
   text-transform: uppercase;
+}
+.todo-list {
+  width: 60%;
+  margin: 40px auto;
+}
+
+ul {
+  margin: 0;
 }
 
 li {
@@ -21,6 +29,7 @@ li {
   list-style: none;
   background: #5DA3E0FF;
   text-transform: uppercase;
+  cursor: default;
 }
 
 p, li {
