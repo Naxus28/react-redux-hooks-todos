@@ -1,0 +1,52 @@
+[
+  {
+    "item" : "Buy groceries",
+    "active" : false,
+    "id": 1
+  },
+  {
+    "item" : "Mown the lawn",
+    "active" : false,
+    "id": 2
+  },
+  {
+    "item" : "Pay electric bill",
+    "active" : false,
+    "id": 3
+  },
+  {
+    "item" : "Pay morgage",
+    "active" : false,
+    "id": 4
+  },
+  {
+    "item" : "Take the trash out",
+    "active" : false,
+    "id": 5
+  },
+  {
+    "item" : "Call car insurance agent",
+    "active" : false,
+    "id": 6
+  },
+  {
+    "item" : "Book vacation trip",
+    "active" : false,
+    "id": 7
+  },
+  {
+    "item" : "Renew EggHead.io subscription",
+    "active" : false,
+    "id": 8
+  },
+  {
+    "item" : "Unpack books",
+    "active" : false,
+    "id": 9
+  },
+  {
+    "item" : "Take car to mechanic to check oil level",
+    "active" : false,
+    "id": 10
+  }
+]
