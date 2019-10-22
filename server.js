@@ -22,9 +22,7 @@ app.post('/todos', (req, res) => {
 
 app.delete('/todos/:id', (req, res) => {
   console.log(`A delete request on ${req.url}`);
-  console.log(data);
   data = data.filter(todo => todo.id !== req.params.id);
-  console.log(data)
   res.json(data);
 });
 
