@@ -2,30 +2,28 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
-import { getTodos, addTodo, deleteTodo } from "./actions/todosActions";
+import {
+  getTodos,
+  addTodo,
+  deleteTodo,
+  toggleTodo
+} from "./actions/todosActions";
 
 function App() {
-  const todos = useSelector(state => state.todos).todos;
+  const { todos } = useSelector(state => state.todos);
   const dispatch = useDispatch();
 
-  useEffect(() => { 
-    dispatch(getTodos()) 
+  useEffect(() => {
+    dispatch(getTodos());
   }, [dispatch]);
 
   const addItem = todo => dispatch(addTodo(todo));
 
   const deleteItem = id => dispatch(deleteTodo(id));
 
-  // const toggleTodo = id => {
-  //   const updatedTodos = todos.map(todo => {
-  //     if (todo.id === id) {
-  //       todo.active = !todo.active;
-  //     }
-
-  //     return todo;
-  //   });
-  // };
-
+  const toggleItem = todo => {
+    dispatch(toggleTodo(todo.id, { ...todo, active: !todo.active }));
+  };
 
   return (
     <div className="App">
@@ -37,7 +35,7 @@ function App() {
           <TodoForm addTodo={addItem} />
           <TodoList
             todos={todos}
-            // toggleTodo={toggleTodo}
+            toggleTodo={toggleItem}
             deleteTodo={deleteItem}
           />
         </>

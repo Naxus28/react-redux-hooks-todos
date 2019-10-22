@@ -10,19 +10,27 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/todos', (req, res) => {
-  console.log(`A get request on ${req.url}`);
+  console.log(`A GET request on ${req.url}`);
   res.json(data);
 });
 
 app.post('/todos', (req, res) => {
-  console.log(`A post request on ${req.url}`);
+  console.log(`A POST request on ${req.url}`);
   data = [req.body, ...data]
   res.json(data);
 });
 
 app.delete('/todos/:id', (req, res) => {
-  console.log(`A delete request on ${req.url}`);
+  console.log(`A DELETE request on ${req.url}`);
   data = data.filter(todo => todo.id !== req.params.id);
+  res.json(data);
+});
+
+app.put('/todos/:id', (req, res) => {
+  console.log(`A PUT request on ${req.url}`);
+  const todoIndex = data.findIndex(todo => todo.id === req.params.id);
+  data[todoIndex] = req.body;
+
   res.json(data);
 });
 
