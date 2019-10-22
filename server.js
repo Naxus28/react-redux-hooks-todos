@@ -1,5 +1,5 @@
 const express = require('express');
-const data = require('./data/todos');
+let data = require('./data/todos');
 const cors = require('cors');
 const PORT = 3003;
 const URL = `http://localhost:${PORT}`;
@@ -17,7 +17,8 @@ app.get('/todos', (req, res) => {
 
 app.post('/todos', (req, res) => {
   console.log(`A post request on ${req.url}`);
-  res.json([req.body, ...data]);
+  data = [req.body, ...data]
+  res.json(data);
 });
 
 app.delete('/todos/:id', (req, res) => {

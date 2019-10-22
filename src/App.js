@@ -1,43 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
-import axios from 'axios';
+import { baseUrl } from './config/global.config';
 
 function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await axios('http://localhost:3003/todos');
+    async function fetchTodos() {
+      const response = await axios(`${baseUrl}/todos`);
       setTodos(response.data);
     }
 
-    fetchData();
+    fetchTodos();
   },[]);
 
-  useEffect(() => {
-    
-  },[todos]);
 
   const toggleTodo = (id) => {
     const updatedTodos = todos.map(todo => {
       if (todo.id === id) {
         todo.active = !todo.active;
       }
+
       return todo;
     });
 
     setTodos(updatedTodos);
   }; 
 
-  const addTodo = (todo) => {
-    axios.post('http://localhost:3003/todos', todo)
-      .then(function (response) {
-        setTodos(response.data);
-      })
-      .catch(function (error) {
-        console.dir(error);
-      });
+  const addTodo = async(todo) => {
+    const response = await axios.post(`${baseUrl}/todos`, todo);
+    setTodos(response.data);
   };
 
   return (

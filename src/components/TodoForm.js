@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import uuid from "uuid";
+import React, { useState } from 'react';
+import uuid from 'uuid';
 
 const TodoForm = ({ addTodo }) => {
   const [todo, setTodo] = useState('');
@@ -23,8 +23,7 @@ const TodoForm = ({ addTodo }) => {
 
   return (
     <form onSubmit={handleSubmit} className="todo-form">
-      <label htmlFor="todo-input">Add todo: </label>
-      <input type="text" id="todo-input" value={todo} onChange={handleChange} />
+      <input type="text" placeholder="Add todo" value={todo} onChange={handleChange} />
       <input type="submit" />
     </form>
   );
