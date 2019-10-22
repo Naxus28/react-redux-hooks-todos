@@ -5,10 +5,23 @@ const PORT = 3003;
 const URL = `http://localhost:${PORT}`;
 const app = express();
 
+app.use(express.urlencoded({ extended: true })); // extended: true  allows posting nested objects
+app.use(express.json());
+
 app.use(cors());
 
-app.get('/', (req, res) => {
+app.get('/todos', (req, res) => {
   console.log(`A get request on ${req.url}`);
+  res.json(data);
+});
+
+app.post('/todos', (req, res) => {
+  console.log(`A post request on ${req.url}`);
+  res.json([req.body, ...data]);
+});
+
+app.delete('/todos/:id', (req, res) => {
+  console.log(`A delete request on ${req.url}`);
   res.json(data);
 });
 

@@ -41,3 +41,25 @@ p, li {
   opacity: .6;
 }
 
+.todo-form {
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.todo-form input[type=text] {
+  width: 30%;
+  height: 30px;
+  padding: 5px;
+  border: none;
+  font-size: 20px;
+}
+.todo-form input[type=submit] {
+  margin-left: 5px;
+  padding: 7px;
+  border: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  background: #2D9;
+}
+
