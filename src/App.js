@@ -1,48 +1,47 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
-import { baseUrl } from "./config/global.config";
+import { getTodos, addTodo, deleteTodo } from "./actions/todosActions";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const todos = useSelector(state => state.todos).todos;
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    async function fetchTodos() {
-      const response = await axios(`${baseUrl}/todos`);
-      setTodos(response.data);
-    }
+  useEffect(() => { 
+    dispatch(getTodos()) 
+  }, [dispatch]);
 
-    fetchTodos();
-  }, []);
+  const addItem = todo => dispatch(addTodo(todo));
 
-  const toggleTodo = id => {
-    const updatedTodos = todos.map(todo => {
-      if (todo.id === id) {
-        todo.active = !todo.active;
-      }
+  const deleteItem = id => dispatch(deleteTodo(id));
 
-      return todo;
-    });
+  // const toggleTodo = id => {
+  //   const updatedTodos = todos.map(todo => {
+  //     if (todo.id === id) {
+  //       todo.active = !todo.active;
+  //     }
 
-    setTodos(updatedTodos);
-  };
+  //     return todo;
+  //   });
+  // };
 
-  const addTodo = async todo => {
-    const response = await axios.post(`${baseUrl}/todos`, todo);
-    setTodos(response.data);
-  };
-
-  const deleteTodo = async id => {
-    const response = await axios.delete(`${baseUrl}/todos/${id}`);
-    setTodos(response.data);
-  };
 
   return (
     <div className="App">
       <h1>Todo List</h1>
-      <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      {todos.processing ? (
+        <p>Loading todos...</p>
+      ) : (
+        <>
+          <TodoForm addTodo={addItem} />
+          <TodoList
+            todos={todos}
+            // toggleTodo={toggleTodo}
+            deleteTodo={deleteItem}
+          />
+        </>
+      )}
     </div>
   );
 }

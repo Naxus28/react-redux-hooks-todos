@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@manaflair/redux-batch": "^1.0.0",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "cors": "^2.8.5",
@@ -13,6 +14,8 @@
     "react-scripts": "3.2.0",
     "redux": "^4.0.4",
     "redux-immutable": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-starter-kit": "^0.9.1",
     "redux-thunk": "^2.3.0",
     "uuid": "^3.3.3"
   },
