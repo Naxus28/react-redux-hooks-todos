@@ -16,7 +16,7 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => {
           ))}
         </ul>
       ) : (
-        <p>No todos yet :)</p>
+        <p>Start adding todos!</p>
       )}
     </div>
   );

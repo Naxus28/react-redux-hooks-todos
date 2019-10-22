@@ -7,7 +7,6 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true })); // extended: true  allows posting nested objects
 app.use(express.json());
-
 app.use(cors());
 
 app.get('/todos', (req, res) => {
@@ -23,7 +22,9 @@ app.post('/todos', (req, res) => {
 
 app.delete('/todos/:id', (req, res) => {
   console.log(`A delete request on ${req.url}`);
-  data = data.filter(todo => todo.id !== parseInt(req.params.id));
+  console.log(data);
+  data = data.filter(todo => todo.id !== req.params.id);
+  console.log(data)
   res.json(data);
 });
 
