@@ -1,7 +1,7 @@
 import React from "react";
 import cn from "classnames";
 
-const Todo = ({ todo, toggleTodo }) => (
+const Todo = ({ todo, toggleTodo, deleteTodo }) => (
   <li>
     <p
       className={cn({ completed: !todo.active }, "todo")}
@@ -9,7 +9,7 @@ const Todo = ({ todo, toggleTodo }) => (
     >
       {todo.item}
     </p>
-    <span>X</span>
+    <span onClick={() => deleteTodo(todo.id)}>X</span>
   </li>
 );
 

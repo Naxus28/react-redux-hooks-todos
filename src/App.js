@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import TodoList from './components/TodoList';
-import TodoForm from './components/TodoForm';
-import { baseUrl } from './config/global.config';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
+import { baseUrl } from "./config/global.config";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -14,10 +14,9 @@ function App() {
     }
 
     fetchTodos();
-  },[]);
+  }, []);
 
-
-  const toggleTodo = (id) => {
+  const toggleTodo = id => {
     const updatedTodos = todos.map(todo => {
       if (todo.id === id) {
         todo.active = !todo.active;
@@ -27,10 +26,15 @@ function App() {
     });
 
     setTodos(updatedTodos);
-  }; 
+  };
 
-  const addTodo = async(todo) => {
+  const addTodo = async todo => {
     const response = await axios.post(`${baseUrl}/todos`, todo);
+    setTodos(response.data);
+  };
+
+  const deleteTodo = async id => {
+    const response = await axios.delete(`${baseUrl}/todos/${id}`);
     setTodos(response.data);
   };
 
@@ -38,7 +42,7 @@ function App() {
     <div className="App">
       <h1>Todo List</h1>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </div>
   );
 }
