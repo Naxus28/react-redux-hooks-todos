@@ -9,7 +9,11 @@
     "express": "^4.17.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-redux": "^7.1.1",
     "react-scripts": "3.2.0",
+    "redux": "^4.0.4",
+    "redux-immutable": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "uuid": "^3.3.3"
   },
   "scripts": {
